@@ -1,6 +1,6 @@
 import pytest
 from sphinx.application import Sphinx
-import os
+from pathlib import Path
 
 
 pytest_plugins = "sphinx.testing.fixtures"
@@ -8,7 +8,7 @@ pytest_plugins = "sphinx.testing.fixtures"
 
 @pytest.fixture(scope="session")
 def rootdir():
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), "roots"))
+    return (Path(__file__).parent.resolve() / "roots")
 
 
 @pytest.fixture()

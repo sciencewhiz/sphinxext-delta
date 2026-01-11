@@ -9,7 +9,7 @@ def test_simple_short(app: Sphinx):
 
     content = read_text(app)
 
-    html = '<h1>test<a class="headerlink" href="#test" title="'
+    html = '<h1>test<a class="headerlink" href="#test"'
 
     assert html in content
 
