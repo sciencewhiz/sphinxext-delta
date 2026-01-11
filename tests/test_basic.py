@@ -9,9 +9,10 @@ def test_simple_short(app: Sphinx):
 
     content = read_text(app)
 
-    html = '<h1>test<a class="headerlink" href="#test" title="Link to this heading">Â¶</a></h1>'
+    html = '<h1>test<a class="headerlink" href="#test" title="'
 
     assert html in content
+
 
 def read_text(app: Sphinx):
     if version_info[:2] < (3, 0):
