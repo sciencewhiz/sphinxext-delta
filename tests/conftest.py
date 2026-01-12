@@ -9,7 +9,6 @@ pytest_plugins = "sphinx.testing.fixtures"
 os.environ.setdefault("READTHEDOCS_VERSION_NAME", "15")
 
 
-
 @pytest.fixture(scope="session")
 def rootdir():
     return path(__file__).parent.abspath() / "roots"

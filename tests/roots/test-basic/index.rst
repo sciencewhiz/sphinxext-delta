@@ -1,4 +1,6 @@
 test
 ====
 
-test change
+.. toctree::
+    test
+
