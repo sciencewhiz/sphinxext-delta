@@ -53,8 +53,6 @@ def inject_changed_files(html_context: Dict[str, str], app: Sphinx) -> None:
     if res.status_code != requests.codes.ok:
         logger.error("Github API request failed (status code: %s)", res.status_code)
         return
-    else:
-        logger.info("GitHub API response content: %s", res.text)
 
     changes_rst = "".join(
         [
@@ -76,13 +74,6 @@ def inject_changed_files(html_context: Dict[str, str], app: Sphinx) -> None:
         filename: str = file_context["filename"]
 
         rel_path = os.path.relpath(filename, app.config.delta_doc_path)
-        logger.warning(
-            "Processing: %s, at location: %s, inject location: %s, delta_doc_path: %s",
-            filename,
-            rel_path,
-            inject_location,
-            app.config.delta_doc_path,
-        )
 
         if app.config.delta_doc_path is None:
             logger.error("Required option delta_doc_path is not set!")
@@ -105,8 +96,8 @@ def inject_changed_files(html_context: Dict[str, str], app: Sphinx) -> None:
 
 
 def config_inited(app: Sphinx, config: Dict[str, Any]):
-    # if on_rtd() and on_pr():
-    inject_changed_files(config["html_context"], app)
+    if on_rtd() and on_pr():
+        inject_changed_files(config["html_context"], app)
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
