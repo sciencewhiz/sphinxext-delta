@@ -51,7 +51,10 @@ def inject_changed_files(html_context: Dict[str, str], app: Sphinx) -> None:
     )
 
     if res.status_code != requests.codes.ok:
+        logger.error("Github API request failed (status code: %s)", res.status_code)
         return
+    else:
+        logger.warning("GitHub API response content: %s", res.text)
 
     changes_rst = "".join(
         [
@@ -94,7 +97,7 @@ def inject_changed_files(html_context: Dict[str, str], app: Sphinx) -> None:
 
 
 def config_inited(app: Sphinx, config: Dict[str, Any]):
-    if on_rtd() and on_pr():
+    # if on_rtd() and on_pr():
         inject_changed_files(config["html_context"], app)
 
 

@@ -1,9 +1,13 @@
+import os
 import pytest
 from sphinx.application import Sphinx
 from sphinx.testing.path import path
 
 
 pytest_plugins = "sphinx.testing.fixtures"
+
+os.environ.setdefault("READTHEDOCS_VERSION_NAME", "15")
+
 
 
 @pytest.fixture(scope="session")
