@@ -1,5 +1,3 @@
-from sphinx.application import logger
-
 extensions = ["sphinx.ext.todo", "sphinxext.delta"]
 
 master_doc = "index"
