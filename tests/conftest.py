@@ -6,7 +6,7 @@ from sphinx.testing.path import path
 
 pytest_plugins = "sphinx.testing.fixtures"
 
-os.environ.setdefault("READTHEDOCS_VERSION_NAME", "15")
+os.environ.setdefault("READTHEDOCS_VERSION_NAME", "17")
 os.environ.setdefault("READTHEDOCS", "True")
 os.environ.setdefault("GITHUB_EVENT_NAME", "pull_request")
 
