@@ -6,9 +6,12 @@ from sphinx.testing.path import path
 
 pytest_plugins = "sphinx.testing.fixtures"
 
-os.environ.setdefault("READTHEDOCS_VERSION_NAME", "17")
-os.environ.setdefault("READTHEDOCS", "True")
-os.environ.setdefault("GITHUB_EVENT_NAME", "pull_request")
+
+@pytest.fixture(autouse=True)
+def set_rtd_env(monkeypatch):
+    monkeypatch.setenv("READTHEDOCS_VERSION_NAME", "17")
+    monkeypatch.setenv("READTHEDOCS", "True")
+    monkeypatch.setenv("GITHUB_EVENT_NAME", "pull_request")
 
 
 @pytest.fixture(scope="session")
